@@ -16,7 +16,9 @@ requestAnimationFrame(drawWheel);
 function doSpin(evt) {
     angle0 = angle % (2*Math.PI);
     var lecNum = document.getElementById("lecNum");
-    var lecNumVal = perm[parseInt(lecNum.value)];
+    //Names are 0-indexed, lectures are 1-indexed.  Also, wheel spins clockwise
+    //but computing a counter-clockwise angle so have to subtract it from names.length
+    var lecNumVal = names.length-perm[parseInt(lecNum.value)-1];
     
     //Given a final angle on which to land and a target time during which to do it
     //Need to solve for initial angular velocity and constant angular acceleration
